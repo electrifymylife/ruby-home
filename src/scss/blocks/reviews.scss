@@ -1,0 +1,77 @@
+.reviews {
+  @include container();
+  padding: 140px 0;
+
+  &__suptitle {
+    display: block;
+    @include text(600, $orange);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__title {
+    @include title();
+    margin-bottom: 70px;
+  }
+
+  &__author {
+    display: grid;
+    grid-template-columns: 74px auto;
+    grid-template-rows: auto;
+    align-items: center;
+    column-gap: 31px;
+    margin-bottom: 36px;
+
+    &-img {
+      grid-column: 1;
+      grid-row: span 2;
+    }
+
+    &-name {
+      grid-column: 2;
+      align-self: end;
+      @include small-title();
+    }
+
+    &-prof {
+      grid-column: 2;
+      align-self: start;
+      @include text(400, $dark);
+      opacity: 0.7;
+      margin-top: 5px;
+    }
+  }
+
+  &__text {
+    @include text(400, $dark);
+    opacity: 0.7;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: calc(40px + 12px);
+}
+
+.swiper-slide {
+  background-color: $white;
+  background-image: url("./assets/img/quotes-icon.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-position-x: calc(100% - 30px);
+  background-position-y: 35px;
+  border: 2px solid rgba(254, 117, 63, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  height: auto;
+}
+
+.swiper-pagination {
+  --swiper-pagination-bottom: 0;
+}
+
+.swiper-pagination-bullet {
+  --swiper-pagination-bullet-width: 12px;
+  --swiper-pagination-bullet-height: 12px;
+}

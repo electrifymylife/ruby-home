@@ -1,0 +1,188 @@
+.navigation {
+  @include container();
+  position: relative;
+  display: grid;
+  grid-template-columns: 26% 1fr 14%;
+  align-items: center;
+  padding-top: 35px;
+  z-index: 2;
+  background-color: $white;
+
+  @media (max-width: $mobile-bp) {
+    grid-template-columns: 1fr 30% 30px;
+    grid-template-rows: auto;
+    column-gap: 35px;
+    align-items: start;
+  }
+
+  &__logo {
+    @media (max-width: $mobile-bp) {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: start;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: end;
+
+    @media (max-width: $mobile-bp) {
+      display: none;
+      grid-row: 2;
+      grid-column: span 3;
+      justify-self: start;
+      padding: 20px 0;
+    }
+  }
+
+  &__link {
+    @include text(500, unset);
+    background-image: linear-gradient(
+                    to right,
+                    $orange,
+                    $orange 50%,
+                    $dark 50%);
+    margin-right: 50px;
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      content: '';
+      background: $orange;
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      background-position: 0;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+
+    &_active {
+      background-image: linear-gradient($orange);
+      font-weight: 600;
+      position: unset;
+      cursor: unset;
+      &:hover::before {
+        width: 0;
+      }
+    }
+
+    @media (max-width: $tablet-bp) {
+      margin-right: 25px;
+    }
+  }
+
+  &__button {
+    @include button(15px 30px);
+
+    @media (max-width: $mobile-bp) {
+      grid-column: 2;
+      grid-row: 1;
+      padding: 5px 10px;
+      font-size: 13px;
+    }
+  }
+}
+
+.toggle {
+  display: none;
+
+  @media (max-width: $tablet-bp) {
+    grid-column: 3;
+    grid-row: 1;
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+
+    top: -15px;
+    left: -15px;
+
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.closed {
+  display: none;
+
+  @media (max-width: $mobile-bp) {
+    display: block;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 20px;
+      right: 15px;
+
+      width: 30px;
+      height: 1.6px;
+
+      background-color: $dark;
+      box-shadow: 0 8px 0 0 $dark, 0 16px 0 0 $dark;
+
+      transition: all .3s ease-out;
+    }
+  }
+}
+
+.opened {
+  @media (max-width: $mobile-bp) {
+    &::before,
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 30px;
+      left: 15px;
+
+      width: 30px;
+      height: 1.6px;
+
+      background-color: $dark;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+      transition: all .3s ease-in;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+      transition: all .3s ease-in;
+    }
+  }
+}
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}

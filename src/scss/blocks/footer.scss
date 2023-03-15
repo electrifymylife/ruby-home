@@ -1,0 +1,119 @@
+.footer {
+  @include container();
+  padding-bottom: 190px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: 15px;
+      justify-self: end;
+    }
+
+    &-title {
+      @include small-title();
+      margin-bottom: 25px;
+    }
+  }
+
+  &__text {
+    @include text(400, $dark);
+    opacity: 0.7;
+    margin: 25px 0;
+  }
+
+  .socials {
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    column-gap: 15px;
+
+    &__item-link {
+      display: block;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0.3;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        animation: fadeIn 1s ease-in 0.5ms alternate;
+      }
+    }
+  }
+
+  &__links-item {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    @include custom-text(16px, 17px, 500, $dark);
+    opacity: 0.7;
+    //margin-bottom: 15px;
+
+    background-image: linear-gradient(
+                    to right,
+                    $orange,
+                    $orange 50%,
+                    $dark 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      content: '';
+      background: $orange;
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      background-position: 0;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  .address {
+    &__text {
+      @include custom-text(16px, 17px, 400, $dark);
+      opacity: 0.7;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    &__link {
+      display: block;
+      @include custom-text(16px, 17px, 400, $dark);
+      opacity: 0.7;
+      margin-bottom: 15px;
+
+      &:first-of-type {
+        font-weight: 500;
+      }
+    }
+  }
+}

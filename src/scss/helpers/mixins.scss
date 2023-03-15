@@ -1,0 +1,101 @@
+@mixin style-none {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin text($weight, $color) {
+  font-family: $poppins;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $weight;
+  font-style: normal;
+  color: $color;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@mixin custom-text($size, $height, $weight, $color) {
+  font-family: $poppins;
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weight;
+  color: $color;
+  font-style: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@mixin title {
+  font-family: $poppins;
+  font-size: $title-size;
+  line-height: $title-height;
+  font-weight: $title-weight;
+  color: $dark;
+  font-style: normal;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url("./assets/img/house-icon.svg") no-repeat;
+    width: 41px;
+    height: 52px;
+    top: -3px;
+    left: -10px;
+  }
+
+  @media (max-width: $mobile-bp) {
+    font-size: calc($title-size - 50%);
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+}
+
+@mixin small-title {
+  font-family: $poppins;
+  font-size: $small-title-size;
+  line-height: $small-title-height;
+  font-weight: $small-title-weight;
+  color: $dark;
+  font-style: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@mixin button($padding) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include text(400, $white);
+  background: $blue;
+  border-radius: 5px;
+  padding: $padding;
+  cursor: pointer;
+  transition: 300ms ease-out;
+
+  &:hover, &:focus {
+    background: #0036B4;
+  }
+}
+
+//@mixin input() {
+//  border: 1px solid #333333;
+//  border-radius: 10px;
+//  padding: 20px 30px;
+//  @include text(16px, 19px);
+//  color: $black;
+//  &::placeholder {
+//    color: rgba(19, 39, 67, 0.5);
+//  }
+//}
+
+@mixin container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

@@ -1,0 +1,16 @@
+.partners {
+  @include container();
+  padding-bottom: 140px;
+
+  &__title {
+    @include title();
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 65px;
+  }
+}

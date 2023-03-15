@@ -1,0 +1,122 @@
+.properties {
+  @include container();
+  padding-bottom: 140px;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    margin-bottom: 70px;
+  }
+
+  &__title {
+    @include title();
+    margin: unset;
+  }
+
+  &__all {
+    @include text(600, $orange);
+    text-transform: uppercase;
+    justify-self: end;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+  }
+
+  &__item {
+    background: #FFFFFF;
+    box-shadow: 0px 8px 70px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    padding: 30px;
+
+    &-header {
+      display: grid;
+      grid-template-columns: 90% 10%;
+      position: relative;
+    }
+
+    &-title {
+      @include small-title();
+    }
+
+    &-like {
+      justify-self: end;
+      margin-top: 10px;
+      cursor: pointer;
+
+      &:hover, &:focus {
+        path {
+          fill: #666;
+        }
+      }
+    }
+
+    &-like.press {
+      path {
+        animation: fade .4s;
+        fill:#e23b3b;
+      }
+
+      @keyframes fade {
+        0% {fill:transparent;}
+        50% {fill: rgba(226, 59, 59, 0.5);}
+        100% {fill:#e23b3b;}
+      }
+    }
+
+    &-location {
+      display: grid;
+      grid-template-columns: 7% 93%;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    &__info-place {
+      @include text(400, $dark);
+    }
+
+    &-facilities {
+      display: grid;
+      grid-template-columns: repeat(3,15%);
+      align-items: center;
+    }
+
+    &-facility {
+      display: flex;
+      align-items: center;
+    }
+
+    &-quantity {
+      @include custom-text(14px, 21px, 400, $dark);
+      margin-left: 5px;
+    }
+
+    &-pricing {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    &-price {
+      @include custom-text(22px, 33px, 600, $orange);
+    }
+
+    &-button {
+      justify-self: end;
+      @include button(10px 20px);
+      font-weight: 500;
+    }
+  }
+}
