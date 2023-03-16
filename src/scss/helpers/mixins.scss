@@ -46,12 +46,23 @@
     height: 52px;
     top: -3px;
     left: -10px;
+    @media (max-width: $tablet-bp) {
+      top: -18px;
+    }
+    @media (max-width: $mobile-bp) {
+      top: -23px;
+    }
   }
 
-  @media (max-width: $mobile-bp) {
+  @media (max-width: $tablet-bp) {
     font-size: calc($title-size - 50%);
     line-height: 120%;
-    margin-bottom: 20px;
+  }
+  @media (max-width: $mobile-bp) {
+    font-size: calc($title-size - 85%);
+  }
+  @media (max-width: $smallest-bp) {
+    font-size: 26px;
   }
 }
 
@@ -64,6 +75,10 @@
   font-style: normal;
   margin-top: 0;
   margin-bottom: 0;
+  @media (max-width: $mobile-bp) {
+    font-size: calc($small-title-size - 25%);
+    line-height: 130%;
+  }
 }
 
 @mixin button($padding) {
@@ -81,17 +96,6 @@
     background: #0036B4;
   }
 }
-
-//@mixin input() {
-//  border: 1px solid #333333;
-//  border-radius: 10px;
-//  padding: 20px 30px;
-//  @include text(16px, 19px);
-//  color: $black;
-//  &::placeholder {
-//    color: rgba(19, 39, 67, 0.5);
-//  }
-//}
 
 @mixin container {
   max-width: $container-width;

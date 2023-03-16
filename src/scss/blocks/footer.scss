@@ -1,17 +1,27 @@
 .footer {
   @include container();
   padding-bottom: 190px;
+  @media (max-width: $mobile-bp) {
+    padding-bottom: 70px;
+  }
 
   &__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    @media (max-width: $mobile-bp) {
+      grid-template-columns: 100%;
+      justify-items: start;
+    }
   }
 
   &__item {
     &:not(:first-child) {
       margin-top: 15px;
       justify-self: end;
+      @media (max-width: $mobile-bp) {
+        justify-self: start;
+      }
     }
 
     &-title {
